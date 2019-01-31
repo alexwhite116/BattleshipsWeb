@@ -168,7 +168,7 @@
 		
 		function accCreateHandler(){
 			var username = $("#createUsername").val();
-			$.post(server_ip_address + ":" + server_port "/people",
+			$.post((server_ip_address + ":" + server_port "/people"),
 				{ 	access_token:"concertina",
 					username:$("#createUsername").val(),
 					forename:$("#createForename").val(),
