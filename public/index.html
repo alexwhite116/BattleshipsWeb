@@ -163,12 +163,11 @@
 	<!--Javascript-->
 	<script>
 		
-		var server_port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
 		var server_ip_address = 'https://battleshipsgslw37.herokuapp.com';
 		
 		function accCreateHandler(){
 			var username = $("#createUsername").val();
-			$.post((server_ip_address + ":" + server_port + "/people"),
+			$.post((server_ip_address + "/people"),
 				{ 	access_token:"concertina",
 					username:$("#createUsername").val(),
 					forename:$("#createForename").val(),
@@ -186,7 +185,7 @@
 			var postClass = $("#class").val();
 			var postDescription = $("#desc").val();
 			var postTonnage = $("#tonnage").val();
-			$.post((server_ip_address + ":" + server_port + "/battleships"),
+			$.post((server_ip_address + "/battleships"),
 				{	access_token:"concertina",
 					class:$("#class").val(),
 					description:$("#desc").val(),
@@ -203,7 +202,7 @@
 
 		function loginHandler(){
 			var username = $("#username").val();
-			$.get((server_ip_address + ":" + server_port + "/people/" + username))
+			$.get((server_ip_address + "/people/" + username))
 				.done(function(data){
 					$("#welcome").html("<br>Hello, " + data["username"] + "! <a href='javascript:logoutHandler()' class ='text-danger'>(log out)</a>");
 					$("#welcome").show();
@@ -223,7 +222,7 @@
 		};
 
 		function initialShipLoad(){
-			$.get((server_ip_address + ":" + server_port + "/battleships"))
+			$.get((server_ip_address + "/battleships"))
 				.done(function(data){
 					for (let i = 0; i < data.length; i++) {
 						var name = data[i]["class"];
