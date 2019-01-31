@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+
+	<!--Page Header-->
+	<div class="container-fluid display-3 text-center text-light bg-info p-4" >
+		<div class="container">Battleships</div>
+		<div id="loginBtn" class="container">
+			<button type="button" class="btn btn-light text-info" data-toggle="modal" data-target="#modalLogin">Login</button>
+		</div>
+		<!--Will display "Hello, <user>" once user logs in-->
+		<div id="welcome" class="container "></div>
+		<div id="createAccBtn" class="container">
+			<button type="button" class="btn btn-light text-info" data-toggle="modal" data-target="#modalCreateAcc">Create Account</button>
+		</div>
+	</div>
+
+	<!--Navbar-->
+	<div class="navbar navbar-inverse sticky-top navbar-dark bg-primary">
+		<div class="container">
+			<a href="#" class="navbar-brand">Battleships</a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    			<span class="navbar-toggler-icon"></span>
+    		</button>
+
+			<div class="collapse navbar-collapse navHeaderCollapse navbar-dark">
+
+				<div class="navbar-nav">
+     				<a class="nav-item nav-link" href="#">Home</a>
+      				<a class="nav-item nav-link" href="#about">About</a>
+      				<a class="nav-item nav-link" href="#battleships">Battleships</a>
+   				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--Log-In Screen (modal)-->
+	<div class="modal fade" id="modalLogin">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title">Log-In Screen</h2>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<form id="login" action="localhost:3022">
+						<div>Username:<br><input id="username"></input></div><br>
+						<input type="submit" class="btn btn-primary" value="Log In" />
+					</form>
+				</div>
+				<div class="modal-footer text-danger">
+					<div id="loginResult"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--Create Account Screen (modal)-->
+	<div class="modal fade" id="modalCreateAcc">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title">Create Account</h2>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<form id="createAcc" action="localhost:3022">
+						<div>Username:<br><input id="createUsername"></input></div><br>
+						<div>Forename:<br><input id="createForename"></input></div><br>
+						<div>Surname:<br><input id="createSurname"></input></div><br>
+						<input type="submit" class="btn btn-primary" value="Create Account" />
+					</form>
+				</div>
+				<div class="modal-footer text-danger">
+					<div id="createAccResult"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--About Section-->
+	<section id="about">
+		<div class="container">
+			<div id="aboutRow" class="row bg-info">
+				<div class="col mx-auto">
+					<h2 class="text-light">About</h2>
+					<p class="text-light">I missed the IP Battleships coursework so much I decided to carry it in to this year as well!</p>
+					<p class ="text-light">This website does the following:</p>
+					<ul class="text-light">
+						<li>Allows users to log in</li>
+						<li>Allows users to create new accounts if they provide the access token 'concertina'</li>
+						<li>Users can add new battleships to the website if they provide the access token 'concertina' on the admin page</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!--Battleships Section-->
+	<section id="battleships">
+			<div class="container p-4">
+				<div id="battleshipTable">
+					<div id="battleshipRow" class="row bg-info text-center">
+						<div class="col mx-auto">
+							<h2 class="text-light">Battleships</h2>
+						</div>
+					</div>
+					<div id="headerRow" class="row bg-primary">
+						<div class="col mx-auto text-center border">
+							<h4 class="text-light">Class</h4>
+						</div>
+						<div class="col mx-auto text-center border">
+							<h4 class="text-light">Description</h4>
+						</div>
+						<div class="col mx-auto text-center border">
+							<h4 class="text-light">Tonnage</h4>
+						</div>
+					</div>
+				</div>
+				<div id="footerRow" class="row bg-info text-center justify-content-center">
+					<button type="button" class="btn btn-primary text-light" data-toggle="modal" data-target="#modalBattleship">New Ship</button>
+				</div>
+			</div>
+	</section>
+
+	<!--Battleship Creation Screen (modal)-->
+	<div class="modal fade" id="modalBattleship">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title">New Battleship</h2>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<form id="newShip" action="localhost:3022">
+						<div>Class:<br><input id="class"></input></div><br>
+						<div>Description:<br><textarea class="form-control" id="desc" rows="3"></textarea></div><br>
+						<div>Tonnage:<br><input id="tonnage"></input></div><br>
+						<input type="submit" class="btn btn-primary" value="Create New Ship" />
+					</form>
+				</div>
+				<div class="modal-footer text-danger">
+					<div id="createShipResult"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--Javascript-->
+	<script>
+
+		function accCreateHandler(){
+			var username = $("#createUsername").val();
+			$.post("http://localhost:3022/people",
+				{ 	access_token:"concertina",
+					username:$("#createUsername").val(),
+					forename:$("#createForename").val(),
+					surname:$("#createSurname").val() })
+				.done(function(data){
+					$("#createAccResult").html("Account for " + username + " successfully created.");
+				})
+				.fail(function(){
+					$("#createAccResult").html("User already exists.")
+				});
+			return false;
+		};
+
+		function newShip(){
+			var postClass = $("#class").val();
+			var postDescription = $("#desc").val();
+			var postTonnage = $("#tonnage").val();
+			$.post("http://localhost:3022/battleships",
+				{	access_token:"concertina",
+					class:$("#class").val(),
+					description:$("#desc").val(),
+					tonnage:$("#tonnage").val() })
+				.done(function(data){
+					$("#createShipResult").html("New ship successfully created of " + postClass + " class");
+					$("#battleshipTable").append(
+							"<div class='row bg-primary'><div class='col mx-auto border'><p class='text-light'>" + postClass + "</p></div><div class='col mx-auto border'><p class='text-light'>" + postDescription + "</p></div><div class='col mx-auto border'><p class='text-light'>" + postTonnage + "</p></div></div>");
+				})
+				.fail(function(){
+					$("#createShipResult").html("That class already exists in the table.")
+				});
+		};
+
+		function loginHandler(){
+			var username = $("#username").val();
+			$.get("http://localhost:3022/people/" + username)
+				.done(function(data){
+					$("#welcome").html("<br>Hello, " + data["username"] + "! <a href='javascript:logoutHandler()' class ='text-danger'>(log out)</a>");
+					$("#welcome").show();
+					$("#loginBtn").hide();
+					$("#createAccBtn").hide();
+					$("#modalLogin").modal('hide');
+				})
+				.fail(function(){
+					$("#loginResult").html("User does not exist.")
+				});
+		};
+
+		function logoutHandler(){
+			$("#welcome").hide();
+			$("#loginBtn").show();
+			$("#createAccBtn").show();
+		};
+
+		function initialShipLoad(){
+			$.get("http://localhost:3022/battleships")
+				.done(function(data){
+					for (let i = 0; i < data.length; i++) {
+						var name = data[i]["class"];
+						var desc = data[i]["description"];
+						var tonnage = data[i]["tonnage"];
+						var img = data[i]["img"];
+						$("#battleshipTable").append(
+							"<div class='row bg-primary'><div class='col mx-auto border'><p class='text-light'>" + name + "</p></div><div class='col mx-auto border'><p class='text-light'>" + desc + "</p></div><div class='col mx-auto border'><p class='text-light'>" + tonnage + "</p></div></div>");
+					};
+				});
+		};
+
+		$(document).ready(initialShipLoad());
+		$("#newShip").on('submit', newShip);
+		$("#createAcc").on('submit',accCreateHandler);
+		$("#login").on('submit', loginHandler);
+		$("#logout").click(logoutHandler);
+	</script>
+
+</body>
+
+</html>

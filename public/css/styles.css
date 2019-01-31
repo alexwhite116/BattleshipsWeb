@@ -1,0 +1,20 @@
+#aboutRow {
+	border-radius: 25px;
+}
+
+#battleshipRow {
+	border-radius: 25px 25px 0px 0px;
+}
+
+#footerRow {
+	border-radius: 0px 0px 25px 25px;
+}
+
+#about {
+	padding-top: 2rem;
+}
+
+#welcome {
+	font-family: verdana;
+	font-size: 16pt;
+}
