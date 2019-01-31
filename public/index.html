@@ -162,10 +162,13 @@
 
 	<!--Javascript-->
 	<script>
-
+		
+		var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+		var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+		
 		function accCreateHandler(){
 			var username = $("#createUsername").val();
-			$.post("http://localhost:3022/people",
+			$.post(server_ip_address + ":" + server_port "/people",
 				{ 	access_token:"concertina",
 					username:$("#createUsername").val(),
 					forename:$("#createForename").val(),
@@ -183,7 +186,7 @@
 			var postClass = $("#class").val();
 			var postDescription = $("#desc").val();
 			var postTonnage = $("#tonnage").val();
-			$.post("http://localhost:3022/battleships",
+			$.post(server_ip_address + ":" + server_port + "/battleships",
 				{	access_token:"concertina",
 					class:$("#class").val(),
 					description:$("#desc").val(),
@@ -200,7 +203,7 @@
 
 		function loginHandler(){
 			var username = $("#username").val();
-			$.get("http://localhost:3022/people/" + username)
+			$.get(server_ip_address + ":" + server_port + "/people/" + username)
 				.done(function(data){
 					$("#welcome").html("<br>Hello, " + data["username"] + "! <a href='javascript:logoutHandler()' class ='text-danger'>(log out)</a>");
 					$("#welcome").show();
@@ -220,7 +223,7 @@
 		};
 
 		function initialShipLoad(){
-			$.get("http://localhost:3022/battleships")
+			$.get(server_ip_address + ":" + server_port + "/battleships")
 				.done(function(data){
 					for (let i = 0; i < data.length; i++) {
 						var name = data[i]["class"];
